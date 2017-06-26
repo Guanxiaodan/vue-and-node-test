@@ -1,0 +1,2 @@
+测试node阻塞进程:::::::
+  www.baidu.com
