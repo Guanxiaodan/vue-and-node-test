@@ -4,6 +4,7 @@ node.js异步编程的直接体现就是回调，但并非所有的回调都是�
 
 ## 阻塞进程实例：
 1.进入*vue-and-node-test/src/tryNode/回调函数*
+
 2.执行：
 ```angularjs
 node block.js
@@ -14,3 +15,19 @@ node block.js
 程序执行结束！
 
 ```
+3.可以看出来读取文件阻碍了下面代码的执行
+
+## 非阻塞进程实例
+1.进入*vue-and-node-test/src/tryNode/回调函数*
+
+2.执行：
+```angularjs
+ node nonBloking.js
+ // 输出结果：
+ 非阻塞代码从程序执行结束
+ 测试node阻塞进程:::::::
+   www.baidu.com
+
+```
+3.结合nonBloking.js代码可以看出来下面的代码并没有因为文件读取被阻塞
+
