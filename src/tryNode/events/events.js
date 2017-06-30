@@ -1,8 +1,10 @@
 /**
  * Created by GXD on 2017/6/29.
  * node.js事件循环
- * 1.事件处理程序
- * 2.触发某个事件
+ * 1.事件处理程序A
+ * 2.将事件处理程序A绑定给待触发事件B  eventEmitter.on(B,A)
+ * 3.触发事件B   eventEmitter.emit(B)
+ * 4.发现事件处理程序A执行了
  */
 
 // 引入events模块

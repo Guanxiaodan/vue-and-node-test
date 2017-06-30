@@ -23,4 +23,22 @@ node.js的事件机制基本都是观察者模式（有点像Vue的计算属性�
 >参考：<https://www.zhihu.com/question/25532384>
 
 ## 事件驱动程序
-### 不懂，谁来解释？？？？
+### 个人理解是这么一个过程：
+
+ * 1.事件处理程序A
+ * 2.将事件处理程序A绑定给待触发事件B  eventEmitter.on(B,A)
+ * 3.触发事件B   eventEmitter.emit(B)
+ * 4.发现事件处理程序A执行了
+ 
+ **所以解释起来是这样：事件`被触发后`驱动`相应的绑定`程序`开始执行`**
+ 
+ 代码详见：*vue-and-node-test/src/tryNode/events/events.js*
+ 
+ **如果是许多事件，就是这样：**
+ ![loop](../assets/loop.jpg)
+
+## node应用程序如何工作？
+**原则：在node应用程序中，执行异步操作的函数将回调函数作为最后一个参数，回调函数接受错误对象作为第一个参数。**
+
+代码参考：*vue-and-node-test/src/tryNode/回调函数/nonBloking.js*
+
