@@ -10,7 +10,7 @@
 // 引入events模块
 var events = require('events')
 
-// 创建eventEmitter对象
+// 创建eventEmitter对象 （比如node的fs对象就是一个events.EventEmitter的实例）
 var eventEmitter = new events.EventEmitter()
 
 // 创建事件处理程序
@@ -21,7 +21,7 @@ var eventHandler = function () {
   console.log('连接成功222222.。。。。。')
 }
 
-// 绑定 connection 事件处理程序
+// 绑定 connection 事件处理程序 （这个过程叫做注册事件监听器，事件是connection）
 eventEmitter.on('connection', eventHandler)
 
 // 使用匿名函数绑定 data_received 事件
@@ -29,7 +29,7 @@ eventEmitter.on('data_received', function () {
   console.log('数据接收成功')
 })
 
-// 触发 connection 事件
+// 触发 connection 事件 （向eventEmitter对象发送connection事件）
 eventEmitter.emit('connection')
 
 console.log('程序执行完毕！！！')
