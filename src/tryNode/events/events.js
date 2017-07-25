@@ -2,7 +2,7 @@
  * Created by GXD on 2017/6/29.
  * node.js事件循环
  * 1.事件处理程序A
- * 2.将事件处理程序A绑定给待触发事件B  eventEmitter.on(B,A)
+ * 2.将事件处理程序(监听器)A绑定给待触发事件B  eventEmitter.on(B,A)
  * 3.触发事件B   eventEmitter.emit(B)
  * 4.发现事件处理程序A执行了
  */
@@ -21,7 +21,7 @@ var eventHandler = function () {
   console.log('连接成功222222.。。。。。')
 }
 
-// 绑定 connection 事件处理程序 （这个过程叫做注册事件监听器，事件是connection）
+// 绑定 connection 事件处理程序 （这个过程叫做注册事件监听器，事件是connection, 监听器是eventHandler）
 eventEmitter.on('connection', eventHandler)
 
 // 使用匿名函数绑定 data_received 事件
