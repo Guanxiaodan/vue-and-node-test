@@ -77,3 +77,5 @@ Buffer.concat(list[, totalLength])
 * *list*---用于合并的Buffer对象数组列表
 * *totalLength*---指定开始读取的索引位置，默认为0
 * *end*---结束位置，默认为缓冲区的末尾
+
+
