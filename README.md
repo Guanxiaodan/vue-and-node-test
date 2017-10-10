@@ -13,6 +13,7 @@
 ### 4.事件循环 ---> node事件循环.md
 ### 5.EventEmitter ---> nodeEventEmitter.md
 ### 6.Buffer ---> node Buffer.md
+### 7.Stream ---> node Stream.md
 
 ## vue
 
