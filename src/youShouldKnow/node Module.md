@@ -16,3 +16,4 @@ exports和require是Node.js 提供的两个对象，exports 是模块公开的�
 优先加载原生模块还是文件模块，看图：
 <img src="./nodejs-require.jpg"/> 
 
+### 详细的文档加载问题还得看文档
