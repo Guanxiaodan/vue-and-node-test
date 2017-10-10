@@ -13,7 +13,7 @@ exports和require是Node.js 提供的两个对象，exports 是模块公开的�
 
 所以这里有两中模块，我们自己写的叫文件模块， 而像http这样子node自带的叫做原生模块。当require一个模块时，node会在内部进行区分是文件模块还是原生模块，进而分别进行加载和缓存
 
-优先加载原生模块还是文件模块，看图：
+#### 优先加载原生模块还是文件模块，看图：
 <img src="../tryNode/module/nodejs-require.jpg"/> 
 
 ### 详细的文档加载问题还得看文档
