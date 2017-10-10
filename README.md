@@ -15,6 +15,7 @@
 ### 6.Buffer ---> node Buffer.md
 ### 7.Stream ---> node Stream.md
 ### 8.模块系统 ---> node Module.md
+### 9.函数 ---> node函数.md
 
 ## vue
 
