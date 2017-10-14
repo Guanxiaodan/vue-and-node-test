@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import checkbox from '@/pages/vueCheckbox'
 import keyup from '@/pages/keyup'
-import text from '@/pages/bindText'
+import father from '@/pages/father'
 
 Vue.use(Router)
 
@@ -25,9 +25,9 @@ export default new Router({
       component: keyup
     },
     {
-      path: '/text',
-      name: 'text',
-      component: text
+      path: '/father',
+      name: 'father',
+      component: father
     }
   ]
 })

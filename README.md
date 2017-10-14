@@ -19,6 +19,12 @@
 ### 10.路由 ---> node路由.md
 
 ## vue
+文档位置：*vue-and-node-test/src/pages/*
+
+### 键盘事件 ---> keyup.vue
+### vue复选框 ---> vueCheckbox.vue
+### 子组件向父组件派发信息 ---> father.vue
+
 
 ## 补充
 ### 服务器数据类型MIME ---> vue-and-node-test/src/youShouldKnow/aboutServer.md
