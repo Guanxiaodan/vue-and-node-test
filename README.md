@@ -24,6 +24,7 @@
 ### 键盘事件 ---> keyup.vue
 ### vue复选框 ---> vueCheckbox.vue
 ### 子组件向父组件派发信息 ---> father.vue
+### 检测url改变 ---> @/index.html
 
 
 ## 补充

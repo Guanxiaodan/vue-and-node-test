@@ -7,5 +7,14 @@
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+      /**
+       * 检测url变化
+       */
+      window.onhashchange = function () {
+        const str = location.hash // 取得hash
+        console.log('查看hash', str)
+      }
+    </script>
   </body>
 </html>
