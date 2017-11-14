@@ -11,6 +11,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "debug": "^3.1.0",
     "vue": "^2.3.3",
     "vue-router": "^2.3.1"
