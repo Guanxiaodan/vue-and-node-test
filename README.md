@@ -27,7 +27,7 @@
 
 
 
-## vue
+## Vue
 文档位置：*vue-and-node-test/src/pages/*
 
 #### 1.键盘事件 ---> keyup.vue
