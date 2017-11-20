@@ -24,10 +24,6 @@ npm install bluebird
 #### Promise的方法：.then()、 .catch()、 .all()、 .race()
 
 
-
-### 使用Promise来重新写爬虫
-文档位置： ./promisePachong.js
-
 ### 使用promise来写小球动画
 文档位置： ./ballPromise.html
 原生js写小球动画： ./ball.html
