@@ -6,9 +6,11 @@ javaScript自身只有字符串数据类型，没有二进制数据类型。
 代码参见： *vue-and-node-test/src/tryNode/buffer/buffer.js*
 ## 一. 创建Buffer类
 #### 方法一：
-```angularjs
+```angularjs  
 // 创建长度为10字节的Buffer实例。
 var buf = new Buffer(10);
+buf.write('guanxiaodan')
+console.log(buf)
 ```
 #### 方法二：
 ```angularjs
@@ -19,6 +21,7 @@ var buf = new Buffer([10, 20, 30, 40]);
 ```angularjs
 // 通过一个字符串来创建Buffer实例。
 var buf = new Buffer("www.runoob.com", "utf-8");
+console.log(buf)
 ```
 ## 二. 写入缓冲区
 >语法： buf.write(string[, offset[, length]][, encoding])
