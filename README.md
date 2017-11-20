@@ -24,7 +24,7 @@
 文件位置： *vue-and-node-test/src/nodeDemo/*
 #### 1.简单爬虫 ---> 小爬虫
 #### 2.使用node的http.request给慕课网添加视频评论 ---> 用js文件给慕课网添加视频评论
-
+#### 3.promise的相关知识及demo ---> promise做动画，写爬虫 ---> promise.md
 
 
 ## Vue
