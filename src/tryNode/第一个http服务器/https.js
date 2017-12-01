@@ -6,8 +6,8 @@ var https = require('https')
 var fs = require('fs')
 
 var options = {
-  key: fs.readFileSync('ssh_key.pem'), // 私钥文件
-  cert: fs.readFileSync('ssh_cert.pem') // 这个是证书文件
+  key: fs.readFileSync('privatekey.pem'), // 私钥文件
+  cert: fs.readFileSync('certificate.pem') // 这个是证书文件
 }
 
 https.createServer(options, (req, res) => {
