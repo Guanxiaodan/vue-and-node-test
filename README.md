@@ -37,6 +37,11 @@
 #### 3.子组件向父组件派发信息 ---> father.vue
 #### 4.检测url改变 ---> @/index.html
 
+## Vue组件
+文档位置：*vue-and-node-test/src/components/*
+
+#### 1.输入框 ---> inputs.vue
+#### 1.表格 ---> tables.vue
 
 
 
