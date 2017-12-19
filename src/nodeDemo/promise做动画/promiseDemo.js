@@ -5,6 +5,7 @@
 
 /**
  * 例子一
+ * 最基本的promise
  */
 // new Promise((resolve, reject) => {
 //   console.log('我是老大');
@@ -47,6 +48,29 @@
  * 链式.then()
  * 返回非promise对象
  */
+// new Promise((resolve, reject) => {
+//   console.log('我是老大')
+//   resolve('这是来自老大的数据')
+// })
+//   .then((data) => {
+//     console.log('我是老二')
+//     console.log(data)
+//     return '这是来自老二的数据'
+//   })
+//   .then((data) => {
+//     console.log('我是老三')
+//     console.log(data)
+//   })
+//   .catch((err) => {
+//     console.log('发生了错误', err)
+//   })
+
+
+/**
+ * 例子四
+ * 链式.then()
+ * 不返回任何数据
+ */
 new Promise((resolve, reject) => {
   console.log('我是老大')
   resolve('这是来自老大的数据')
@@ -54,11 +78,9 @@ new Promise((resolve, reject) => {
   .then((data) => {
     console.log('我是老二')
     console.log(data)
-    return '这是来自老二的数据'
   })
-  .then((data) => {
+  .then(() => {
     console.log('我是老三')
-    console.log(data)
   })
   .catch((err) => {
     console.log('发生了错误', err)
