@@ -67,3 +67,15 @@ function Person () {
 var person = new Person()
 console.log(util.inspect(person))
 console.log(util.inspect(person, true, null, true))
+
+// 返回数据
+// Person { name: '关晓丹', toString: [Function] }
+// Person {
+//   name: '关晓丹',
+//     toString:
+//   { [Function]
+//     [length]: 0,
+//     [name]: '',
+//     [arguments]: null,
+//     [caller]: null,
+//     [prototype]: { [constructor]: [Circular] } } }
