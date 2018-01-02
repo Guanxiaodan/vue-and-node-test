@@ -4,6 +4,7 @@
 
 ## Node
 文档位置：*vue-and-node-test/src/youShouldKnow/*
+node官方文档： http://nodejs.cn/api/
 
 > 注：这里是文档的阅读顺序
 
@@ -20,6 +21,7 @@
 #### 11.全局变量 ---> node全局变量.md
 #### 12.node常用工具 ---> node常用工具.md
 #### 13.node文件系统 ---> node文件系统.md
+#### 14.node.js POST,GET请求 ---> 发送请求.md
 
 
 
