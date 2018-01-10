@@ -4,6 +4,7 @@ import Hello from '@/components/Hello'
 import checkbox from '@/pages/vueCheckbox'
 import keyup from '@/pages/keyup'
 import father from '@/pages/father'
+import table from '@/pages/table'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/father',
       name: 'father',
       component: father
+    },
+    {
+      path: '/table',
+      name: 'table',
+      component: table
     }
   ]
 })

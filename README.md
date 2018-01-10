@@ -43,6 +43,7 @@ node官方文档： http://nodejs.cn/api/
 #### 2.vue复选框 ---> vueCheckbox.vue
 #### 3.子组件向父组件派发信息 ---> father.vue
 #### 4.检测url改变 ---> @/index.html
+#### 4.table组件 ---> table.vue (最普通表格，带操作表格)
 
 ## Vue组件
 文档位置：*vue-and-node-test/src/components/*

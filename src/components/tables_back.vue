@@ -8,13 +8,12 @@
       </thead>
       <tbody>
       <!--列表-->
-      <tr v-for="(item, index) in allData" :key="index">
+      <tr v-for="(item, index) in pageData" :key="index">
         <td width="200" v-for="value in item" :key="value">
           {{value}}
         </td>
-
-        <td v-if="operateArr[0].operateTitle !== ''">
-          <div class="btn" v-for="operat in operateArr" @click="operat.operateFn(index, item)">{{operat.operateTitle}}</div>
+        <td v-if="operate.havaOperate" style="display: flex;flex-direction: row; justify-content: space-around;">
+          <div class="btn" v-for="operat in operate.operateArr" @click="operat.operateFn">{{operat.operateTitle}}</div>
         </td>
       </tr>
       <!--暂无数据-->
@@ -25,6 +24,10 @@
       </tr>
       </tbody>
     </table>
+    <div class="page" :style="{marginTop: pageMarginTop+'px'}" ref="page">
+      <Page v-if="perPageCount!==0 && allData.length>0" :page-size="perPageCount" :total="allData.length"
+            @on-change="changePage" style="text-align: center;"></Page>
+    </div>
   </div>
 </template>
 
@@ -39,12 +42,16 @@
 
   /* eslint-disable no-trailing-spaces,object-shorthand */
 
-  //  const _ = require('lodash')
-  //  const debug = require('debug')('table')
+  const _ = require('lodash')
+  const debug = require('debug')('table')
 
   export default {
     data () {
-      return {}
+      return {
+        curPage: 1,
+        pageData: [],
+        pageMarginTop: 0
+      }
     },
     props: {
       title: { // 表格表头
@@ -55,6 +62,10 @@
       allData: { // 表格展示数据
         type: Array,
         default: []
+      },
+      perPageCount: { // 表格每页展示多少条数据， 如果没传，就不设置分页
+        type: Number,
+        default: 0
       },
       operate: { // 对表格数据的操作
         type: Object,
@@ -70,22 +81,32 @@
             ]
           }
         }
-      },
-      operateArr: { // 对表格数据的操作,返回该条数据的索引和值
-        type: Array,
-        default () {
-          return [
-            {
-              operateTitle: '',
-              operateFn: () => {
-              }
-            }
-          ]
-        }
       }
     },
-    methods: {},
+    methods: {
+      // 点击分页,划分每页数据
+      changePage (page) {
+        this.curPage = page
+        const startItem = (page - 1) * this.perPageCount
+        const endItem = ((page - 1) * this.perPageCount) + this.perPageCount
+        this.pageData = _.slice(this.allData, startItem, endItem)
+        debug('本页数据,第几页', this.pageData, this.curPage)
+      }
+    },
+    watch: {
+      allData () {
+        this.pageData = _.slice(this.allData, 0, this.perPageCount)
+        setTimeout(() => {
+          const hei = this.$refs.table.offsetHeight
+          this.pageMarginTop = hei + 50
+          debug('分页marginTop', this.pageMarginTop)
+        }, 100)
+      }
+    },
     created () {
+      if (this.perPageCount === 0) {
+        this.pageData = this.allData
+      }
     }
   }
 </script>
@@ -129,5 +150,10 @@
   .btn {
     color: #54c0f7;
     cursor: pointer;
+  }
+
+  .page {
+    position: absolute;
+    width: 100%;
   }
 </style>
