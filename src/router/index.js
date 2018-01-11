@@ -5,6 +5,7 @@ import checkbox from '@/pages/vueCheckbox'
 import keyup from '@/pages/keyup'
 import father from '@/pages/father'
 import table from '@/pages/table'
+import title from '@/pages/table_objTitle'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/table',
       name: 'table',
       component: table
+    },
+    {
+      path: '/title',
+      name: 'title',
+      component: title
     }
   ]
 })
