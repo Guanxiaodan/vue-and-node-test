@@ -22,18 +22,18 @@ node官方文档： http://nodejs.cn/api/
 #### 12.node常用工具 ---> [node常用工具.md](./src/youShouldKnow/node常用工具.md)
 #### 13.node文件系统 ---> [node文件系统.md](./src/youShouldKnow/node文件系统.md)
 #### 14.node.js POST,GET请求 ---> [处理请求.md](./src/youShouldKnow/处理请求.md)
-#### 14.node.js工具模块 ---> [工具模块.md](./src/youShouldKnow/工具模块.md)
-#### 14.web模块 ---> [web模块.md](./src/youShouldKnow/web模块.md)
+#### 15.node.js工具模块 ---> [工具模块.md](./src/youShouldKnow/工具模块.md)
+#### 16.web模块 ---> [web模块.md](./src/youShouldKnow/web模块.md)
 
 
 
 ## Node Demo
 文件位置： *vue-and-node-test/src/nodeDemo/*
-#### 1.简单爬虫 ---> 小爬虫
-#### 2.使用node的http.request给慕课网添加视频评论 ---> 用js文件给慕课网添加视频评论
-#### 3.promise的相关知识及demo ---> promise做动画 ---> promise.md
-#### 4.使用buffer生成base64编码图片 ---> bufferImg
-#### 5.Stream的相关知识练习 ---> stream ---> stream.md
+#### 1.简单爬虫 ---> [小爬虫](./src/nodeDemo/小爬虫)
+#### 2.使用node的http.request给慕课网添加视频评论 ---> [用js文件给慕课网添加视频评论](./src/nodeDemo/用js文件给慕课网添加视频评论)
+#### 3.promise的相关知识及demo ---> [promise做动画](./src/nodeDemo/promise做动画) ---> [promise.md](./src/nodeDemo/promise做动画/promise.md)
+#### 4.使用buffer生成base64编码图片 ---> [bufferImg](./src/nodeDemo/bufferImg)
+#### 5.Stream的相关知识练习 ---> [stream](./src/nodeDemo/stream) ---> [stream.md](./src/nodeDemo/stream/stream.md)
 
 
 ## Vue
