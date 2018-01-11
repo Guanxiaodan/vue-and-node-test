@@ -49,8 +49,8 @@ node官方文档： http://nodejs.cn/api/
 ## Vue组件
 文档位置：*vue-and-node-test/src/components/*
 
-#### 1.输入框 ---> inputs.vue
-#### 1.表格 ---> tables.vue
+#### 1.输入框 ---> [inputs.vue](./src/components/inputs.vue)
+#### 1.表格 ---> [tables.vue](./src/components/tables.vue)
 
 
 
