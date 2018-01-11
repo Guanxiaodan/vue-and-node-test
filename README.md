@@ -55,7 +55,7 @@ node官方文档： http://nodejs.cn/api/
 
 
 ## 补充
-#### 1.服务器数据类型MIME ---> vue-and-node-test/src/youShouldKnow/aboutServer.md
+#### 1.[服务器数据类型MIME](./src/youShouldKnow/aboutServer.md)
 
 
 ## 小小知识点
