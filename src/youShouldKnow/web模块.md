@@ -5,6 +5,6 @@ web服务器的基本功能就是提供web信息浏览服务，他只需要支�
 目前流行的web服务器是：apache, nginx, iis.
 
 ## node既能创建web服务器，也能创建web客户端！
-### [创建web服务器](../tryNode/web服务器.js)
+### [创建web服务器](../tryNode/web模块/web服务器.js)
 
 
