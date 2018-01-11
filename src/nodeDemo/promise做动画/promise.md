@@ -26,4 +26,5 @@ npm install bluebird
 
 ### 使用promise来写小球动画
 文档位置： [ballPromise.html](./ballPromise.html)
+
 原生js写小球动画： [ball.html](./ball.html)
