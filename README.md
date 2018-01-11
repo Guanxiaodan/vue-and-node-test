@@ -8,7 +8,7 @@ node官方文档： http://nodejs.cn/api/
 
 > 注：这里是文档的阅读顺序
 
-#### 1.关于NPM ---> aboutNpm.md
+#### 1.关于NPM ---> [aboutNpm.md](./youShouldKnow/aboutNpm.md)
 #### 2.REPL ---> node.js REPL.md
 #### 3.回调函数 ---> node回调函数.md
 #### 4.事件循环 ---> node事件循环.md
