@@ -1,6 +1,12 @@
 /**
  * Created by GXD on 2018/1/2.
+ * 使用node创建web服务器
+ * 下面是一个最基本的HTTP服务器架构，使用8080端口（使用http模块搭建）
+ * 显然url模块是用来解析url的工具
  *
+ * 执行：
+ * node web服务器.js
+ * 打开浏览器，地址栏输入： http://127.0.0.1:8080/index.html
  */
 var http = require('http')
 var fs = require('fs')
