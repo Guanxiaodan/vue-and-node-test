@@ -6,7 +6,7 @@
 exports和require是Node.js 提供的两个对象，exports 是模块公开的接口，require 用于从外部获取一个模块。
 
 ## 创建模块
-代码位置： *[vue-and-node-test/src/tryNode/module/useModule.js](../tryNode/module/useModule.js)*
+代码位置： [vue-and-node-test/src/tryNode/module/useModule.js](../tryNode/module/useModule.js)
 
 ## 服务端的模块放在哪里
 比如 http 这个Node.js 自带的模块

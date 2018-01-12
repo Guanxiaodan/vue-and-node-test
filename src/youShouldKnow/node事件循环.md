@@ -32,7 +32,7 @@ node.js的事件机制基本都是观察者模式（有点像Vue的计算属性�
  
  **所以解释起来是这样：事件`被触发后`驱动`相应的绑定`程序`开始执行`**
  
- 代码详见：*vue-and-node-test/src/tryNode/events/events.js*
+ 代码详见：[vue-and-node-test/src/tryNode/events/events.js](../tryNode/events/events.js)
  
  **如果是许多事件，就是这样：**
  ![loop](../assets/loop.jpg)
@@ -40,5 +40,5 @@ node.js的事件机制基本都是观察者模式（有点像Vue的计算属性�
 ## node应用程序如何工作？
 **原则：在node应用程序中，执行异步操作的函数将回调函数作为最后一个参数，回调函数接受错误对象作为第一个参数。**
 
-代码参考：*vue-and-node-test/src/tryNode/回调函数/nonBloking.js*
+代码参考：[vue-and-node-test/src/tryNode/回调函数/nonBloking.js](../tryNode/回调函数/nonBloking.js)
 
