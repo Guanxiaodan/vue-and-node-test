@@ -1,5 +1,5 @@
 # Node.js EventEmitter
-代码参见*vue-and-node-test/src/tryNode/events/events.js*
+代码参见*[vue-and-node-test/src/tryNode/events/events.js](../tryNode/events/events.js)*
 
 node.js 的线程池里执行完程序的事件会在完事的事件队列里排队来返回结果
 

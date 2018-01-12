@@ -17,17 +17,17 @@ stream是一个抽象接口，node中有很多对象都实现了这个接口，�
 #### finish ---- 所有数据已被写入到底层系统时触发
 
 ## 四. 从流中读取数据
-代码位置：*vue-and-node-test/src/tryNode/stream/readInStream.js*
+代码位置：*[vue-and-node-test/src/tryNode/stream/readInStream.js](../tryNode/stream/readInStream.js)*
 
 查看流test.txt的内容：
 ```angular2html
 cat test.txt
 ```
 ## 五. 写入流
-代码位置：*vue-and-node-test/src/tryNode/stream/writeToStream.js*
+代码位置：*[vue-and-node-test/src/tryNode/stream/writeToStream.js](../tryNode/stream/writeToStream.js)*
 
 ## 六. 管道流
-代码位置：*vue-and-node-test/src/tryNode/stream/pipeStream.js*
+代码位置：*[vue-and-node-test/src/tryNode/stream/pipeStream.js](../tryNode/stream/pipeStream.js)*
 
 我们通过管道，可以从一个流中获取数据并将数据传递到另一个流中。
 

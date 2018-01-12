@@ -3,7 +3,7 @@ javaScript自身只有字符串数据类型，没有二进制数据类型。
 但是在处理TCP流或文件流时,必须用二进制数据，所以node.js定义了一个Buffer类，这个类会创建一个专门存放二进制数据的缓存区。
 每当需要在node中处理I/O操作中移动的数据时，就有可能使用Buffer库，原始数据存储在Buffer类的实例中。一个Buffer类似于一个整数数组，它对应于V8堆内存之外的一块原始内存。
 
-代码参见： *vue-and-node-test/src/tryNode/buffer/buffer.js*
+代码参见： *[vue-and-node-test/src/tryNode/buffer/buffer.js](../tryNode/buffer/buffer.js)*
 ## 一. 创建Buffer类
 #### 方法一：
 ```angularjs  
