@@ -53,13 +53,3 @@ node官方文档： http://nodejs.cn/api/
 #### 1.表格 ---> [tables.vue](./src/components/tables.vue)
 
 
-
-## 补充
-#### 1.[服务器数据类型MIME](./src/youShouldKnow/aboutServer.md)
-
-
-## 小小知识点
-1.使用**axios**,返回的错误往往拿不到错误信息，得这样拿：
-```angular2html
-err.response.data
-```
