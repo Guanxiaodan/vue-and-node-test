@@ -24,6 +24,7 @@ node官方文档： http://nodejs.cn/api/
 #### 14.node.js POST,GET请求 ---> [处理请求.md](./src/youShouldKnow/处理请求.md)
 #### 15.node.js工具模块 ---> [工具模块.md](./src/youShouldKnow/工具模块.md)
 #### 16.web模块 ---> [web模块.md](./src/youShouldKnow/web模块.md)
+#### 17.Express模块 ---> [nodeExpress.md](./src/youShouldKnow/nodeExpress.md)
 
 
 
