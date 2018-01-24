@@ -5,6 +5,12 @@
     <title>post</title>
 </head>
 <body>
-
+<!--使用form提交表单(POST)（向后台发送数据）-->
+  <form action="http://127.0.0.1:8085/process_post" method="POST">
+    姓：<input type="text" name="first_name">
+    <br>
+    名：<input type="text" name="last_name">
+    <input type="submit" value="提交">
+  </form>
 </body>
 </html>
