@@ -46,6 +46,7 @@ node官方文档： http://nodejs.cn/api/
 #### 4.检测url改变 ---> [@/index.html](./index.html)
 #### 4.table组件 ---> [table.vue (最普通表格，带操作表格)](./src/pages/table.vue)
 #### 4.table组件 ---> [table_objTitle.vue (相比较上一个，不用重新整合数据)](./src/pages/table_objTitle.vue)
+#### 4.提示组件 ---> [提示组件](./src/pages/notice.vue)
 
 ## Vue组件
 文档位置：*vue-and-node-test/src/components/*

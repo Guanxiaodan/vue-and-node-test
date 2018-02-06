@@ -6,6 +6,7 @@ import keyup from '@/pages/keyup'
 import father from '@/pages/father'
 import table from '@/pages/table'
 import title from '@/pages/table_objTitle'
+import notice from '@/pages/notice'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/title',
       name: 'title',
       component: title
+    },
+    {
+      path: '/notice',
+      name: 'notice',
+      component: notice
     }
   ]
 })
