@@ -55,3 +55,6 @@ node官方文档： http://nodejs.cn/api/
 #### 1.表格 ---> [tables.vue](./src/components/tables.vue)
 
 
+## 对Vue的理解
+#### 1.Vue双向绑定原理 ---> [双向绑定.md](src/aboutVue/双向绑定原理/双向绑定.md)
+
