@@ -1,13 +1,14 @@
 # 傻傻分不清楚Export和Module.exports?分不清import和require
 
-##首先明确一下对应关系
+## 首先明确一下对应关系
+
 ①：module.exports、exports ----> require (Commenjs 语法Node)
 
 ②：export ----> import (ES6语法)
 
 
 ## 其实
-> module.exports     exports
+> module.exports、exports
 
 module.exports是比较早的写法，是node文件自带的属性：
 ```apple js
@@ -38,7 +39,7 @@ console.log(t.b);
 exports = module.exports
 ```
 
-> export    export default
+> export、export default
 
 再后来，出现了export
 
