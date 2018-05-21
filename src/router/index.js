@@ -7,6 +7,7 @@ import father from '@/pages/father'
 import table from '@/pages/table'
 import title from '@/pages/table_objTitle'
 import notice from '@/pages/notice'
+import sprite from '@/pages/spriteTest'
 
 Vue.use(Router)
 
@@ -46,6 +47,11 @@ export default new Router({
       path: '/notice',
       name: 'notice',
       component: notice
+    },
+    {
+      path: '/sprite',
+      name: 'sprite',
+      component: sprite
     }
   ]
 })
