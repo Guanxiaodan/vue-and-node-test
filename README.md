@@ -25,6 +25,7 @@ node官方文档： http://nodejs.cn/api/
 #### 15.node.js工具模块 ---> [工具模块.md](./src/youShouldKnow/工具模块.md)
 #### 16.web模块 ---> [web模块.md](./src/youShouldKnow/web模块.md)
 #### 17.Express模块 ---> [nodeExpress.md](./src/youShouldKnow/nodeExpress.md)
+#### 18.Export导入导出系列 ---> [Exports.md](./src/youShouldKnow/Exports.md)
 
 
 
