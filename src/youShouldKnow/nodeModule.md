@@ -110,9 +110,13 @@ function Module(id, parent) {
     
   🦋 为什么有了一个exports,还有一个module.exports??
     
-    从上面看出来，exports是对文件包装时传入的参数，而module.exports是构造函数Module的一个自带属性，最后Module这个构造函数也被当做参数给包装函数传进去了。（自己的理解，不一定正确）
+    exports = module.exports,也就是说，将module.exports赋值给了exports，然后将exports当做参数传给包装函数，这样给调用者提供了一些方便。（自己理解的，不知正确与否）
+    如果要require()进来一个类，就赋值给module.exports对象。
     
+  🍋 JSON模块的编译
+  json文件的编译时最简单的，Node利用fs模块同步读取JSON文件的内容后，调用JSON.parse()方法得到对象，然后将它赋值给模块对象的exports，供外部调用
     
+   🌲 性能优化：有时候使用JSON文件做项目的配置文件时，我们会用fs去异步读取和解析，其实不必，直接调用require()引入，省去了异步读取和解析的麻烦，而且还能缓存，二次引入时不会对性能产生影响。
   
   
   
