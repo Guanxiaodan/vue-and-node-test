@@ -5,7 +5,7 @@
 
 前面说过Node在很大程度上收到了CommonJs规范的影响。下面我们来分别看一下：
 
-## 🍎.CommonJs 模块
+## 🍎 CommonJs 模块
 #### 🍊 CommonJs主要有三个部分组成：
   🍋 模块引用：require
   
@@ -18,7 +18,7 @@ var math = require('mathes')
 ```
 > 模块标识必须是驼峰命名，或者是以.或..开头的相对路径，或者是以/开头的绝对路径
 
-## 🍎.Node模块
+## 🍎 Node模块
 > 在Node中，一个文件就是一个module对象，module对象有一个exports属性。
 
 #### 🍊 Node模块分为两类：
@@ -32,7 +32,7 @@ var math = require('mathes')
   
    路径分析、文件定位、编译执行
   
-  🍋 部分**核心模块**在Node启动时就存到了内存中。存到内存中的模块就不用进行**文件定位**、**编译执行**和**编译执行**三步了。
+  🍋 部分**核心模块**在Node启动时就存到了内存中。存到内存中的模块就不用进行**路径分析**、**文件定位**和**编译执行**三步了。
 
     
       
@@ -56,15 +56,13 @@ var math = require('mathes')
   
   所以：
   **当前文件路径越深，模块查找耗时越多，所以自定义模块加载速度最慢**
-  可是他为什么要找到根目录，第一个数组元素不就已经有了根目录了吗？？？
-  
   
 #### 🍊 文件定位
   🍋 文件定位主要有这两个部分：文件扩展名分析、目录和包的处理。
   
   🍋 文件扩展名分析
   
-  如果模块标识中不含有扩展名，则Node会按照**.js、.json、.node**的次序补足扩展名，依次尝试。
+  如果模块标识中不含有扩展名，则Node会按照.js、.json、.node的次序补足扩展名，依次尝试。
   
   🌲 性能优化：如果是.node和.json文件，在传递给require()时的模块标识带上扩展名，会加快一点速度。
   
@@ -80,35 +78,35 @@ var math = require('mathes')
   
 #### 🍊 模块编译
   前面说过，每个文件模块都是一个module对象，那么它是如何定义的呢？如下：
-  ```apple js
+```apple js
 function Module(id, parent) {
-  this.id = id;
-  this.exports = {};
-  this.parent = parent;
-  if (parent && parent.children) {
-    parent.children.push(this)
-  }
-  this.filename = null;
-  this.loaded = false;
-  this.children = [];
+    this.id = id;
+    this.exports = {};
+    this.parent = parent;
+    if (parent && parent.children) {
+      parent.children.push(this)
+    }
+    this.filename = null;
+    this.loaded = false;
+    this.children = [];
 }
 ```
  🍋 每一个编译成功的模块都会将其文件路径作为索引缓存在Module._cache对象上（看这名字和写法猜这应该是Module原型链上的缓存属性），以提高二次引入时的性能。
  
  🍋 JavaScript模块的编译
  
- 🌲 我们知道在每个模块中存在着require,exports,module这三个变量，但是他们在模块文件中并没有定义，那么从何而来？在Node的API中，我们知道每个模块中还有__filename,__dirname,他们有事从何而来？
+ 🌲 我们知道在每个模块中存在着require,exports,module这三个变量，但是他们在模块文件中并没有定义，那么从何而来？在Node的API中，我们知道每个模块中还有__filename,__dirname,他们又是从何而来？
        
-       实际上，在编译过程中，Node对JavaScript文件进行了包装，成为了这个样子：
- ```apple js
+ 实际上，在编译过程中，Node对JavaScript文件进行了包装，成为了这个样子：
+```apple js
 (function(exports,require,module,__filename,__dirname){
-  var math = require('math');
-  exports.area = function(radius) {
-    return Math.PI * radius * radius;
-  }
+    var math = require('math');
+    exports.area = function(radius) {
+      return Math.PI * radius * radius;
+    }
 })
 ```
-    这样，每个模块文件之间都进行了作用域隔离，，包装之后的代码用runInThisContext()方法执行，返回一个function对象，最后将当前模块的module，require()方法，exports属性，还有在文件定位中得到的文件路径和文件目录座位参数传递给这个function执行。
+这样，每个模块文件之间都进行了作用域隔离，，包装之后的代码用runInThisContext()方法执行，返回一个function对象，最后将当前模块的module，require()方法，exports属性，还有在文件定位中得到的文件路径和文件目录座位参数传递给这个function执行。
     
   🦋 为什么有了一个exports,还有一个module.exports??
     
