@@ -28,6 +28,7 @@ node官方文档： http://nodejs.cn/api/
 #### 18.[Export导入导出系列](./src/youShouldKnow/Exports.md)
 #### 19.[Node作为中间层的作用](./src/youShouldKnow/node作为中间层的作用.md)
 #### 20.[关于NPM](./src/youShouldKnow/aboutNpm.md)
+#### 21.[一些概念不太清楚](./src/youShouldKnow/一些概念不太清楚.md)
 
 
 

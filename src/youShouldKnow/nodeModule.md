@@ -19,7 +19,7 @@ var math = require('mathes')
 > 模块标识必须是驼峰命名，或者是以.或..开头的相对路径，或者是以/开头的绝对路径
 
 ## 🍎.Node模块
-> 在Node中，一个文件就是一个model对象，model对象有一个exports属性。
+> 在Node中，一个文件就是一个module对象，module对象有一个exports属性。
 
 #### 🍊 Node模块分为两类：
   🍋 核心模块： Node自带的模块
@@ -72,9 +72,43 @@ var math = require('mathes')
   🦋 如果在当前目录没有成功定位到任何文件，则Node进入下一个模块路径（也就是当前目录的父级目录）进行查询。
   🦋 如果模块路径被遍历完都没有找到目标文件，则会抛出异常。
   
-  
-  
-  
+#### 🍊 模块编译
+  前面说过，每个文件模块都是一个module对象，那么它是如何定义的呢？如下：
+  ```apple js
+function Module(id, parent) {
+  this.id = id;
+  this.exports = {};
+  this.parent = parent;
+  if (parent && parent.children) {
+    parent.children.push(this)
+  }
+  this.filename = null;
+  this.loaded = false;
+  this.children = [];
+}
+```
+ 🍋 每一个编译成功的模块都会将其文件路径作为索引缓存在Module._cache对象上（看这名字和写法猜这应该是Module原型链上的缓存属性），以提高二次引入时的性能。
+ 
+ 🍋 JavaScript模块的编译
+ 
+ 🌲 我们知道在每个模块中存在着require,exports,module这三个变量，但是他们在模块文件中并没有定义，那么从何而来？在Node的API中，我们知道每个模块中还有__filename,__dirname,他们有事从何而来？
+       
+       实际上，在编译过程中，Node对JavaScript文件进行了包装，成为了这个样子：
+ ```apple js
+(function(exports,require,module,__filename,__dirname){
+  var math = require('math');
+  exports.area = function(radius) {
+    return Math.PI * radius * radius;
+  }
+})
+```
+    这样，每个模块文件之间都进行了作用域隔离，，包装之后的代码用runInThisContext()方法执行，返回一个function对象，最后将当前模块的module，require()方法，exports属性，还有在文件定位中得到的文件路径和文件目录座位参数传递给这个function执行。
+    
+  🦋 为什么有了一个exports,还有一个module.exports??
+    
+    从上面看出来，exports是对文件包装时传入的参数，而module.exports是构造函数Module的一个自带属性，最后Module这个构造函数也被当做参数给包装函数传进去了。（自己的理解，不一定正确）
+    
+    
   
   
   
