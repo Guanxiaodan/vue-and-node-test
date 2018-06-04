@@ -119,7 +119,21 @@ function Module(id, parent) {
   > 缓存核心模块>缓存文件模块>核心模块>文件模块
   
   
+### 🍎 2.2.2 核心模块加载
+Node的**核心模块**在编译成可执行文件的过程中被编译进了二进制文件。核心模块其实分为C/C++编写的和JavaScript编写的，其中C/C++文件存放在Node项目的src目录下，JavaScript文件存放在lib目录下。
+
+#### 🍊 2.2.2.1 JavaScript核心模块编译过程
+在编译所有C/C++文件之前，编译程序需要将所有的JavaScript模块文件便以为C/C++代码（这时并非为可执行代码）
+
+ 🍋 转存为C/C++代码并存入内存
+  Node采用的V8引擎会将所有内置的JavaScript代码转换成C++里的数组，生成node_natives.h头文件。在这个过程中，JavaScript代码一字符串的形式存储在node命名空间中。然后在启动Node进程时，JavaScript代码直接加载进内存中。所以加载核心模块是从内存中加载的。
   
+ 🍋 编译JavaScript核心模块
+  上面不是说核心模块转换成C/C++代码存到头文件里了吗，然后在在编译的时候将文件取出来缓存到NativeModule._cache对象上。（文件模块是缓存到Module._chche上。）
+ 
+#### 🍊 2.2.2.2 C/C++核心模块编译过程
+
+
   
   
   
