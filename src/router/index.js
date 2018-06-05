@@ -8,6 +8,7 @@ import table from '@/pages/table'
 import title from '@/pages/table_objTitle'
 import notice from '@/pages/notice'
 import sprite from '@/pages/spriteTest'
+import setInterval from '@/pages/setInterval'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/sprite',
       name: 'sprite',
       component: sprite
+    },
+    {
+      path: '/setInterval',
+      name: 'setInterval',
+      component: setInterval
     }
   ]
 })
