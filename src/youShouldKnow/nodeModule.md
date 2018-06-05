@@ -177,12 +177,28 @@ CommonJS包规范由**包结构**和**包描述文件**两部分组成。
 ### 🍎 2.3.3 NPM常用功能
 #### 🍊 2.3.3.1 全局模式安装
 如果包中含有命令行工具（bin），那么需要执行npm install express -g命令进行全局模式安装。
-> 注意： 这个全局模式的字眼并不准确，全局安装的包并不意味着在任何地方通过require()的方式都能引用到。实际上，-g是将一个包安装为全局可用的可执行命令，它根据宝描述文件中的斌字段配置。
+> 注意： 这个全局模式的字眼并不准确，全局安装的包并不意味着在任何地方通过require()的方式都能引用到。实际上，-g是将一个包安装为全局可用的可执行命令，它根据package.json中的bin字段配置。
   
-  
+  全局安装的包被安装进了一个统一的目录下。
+    
+#### 🍊 2.3.3.2 从非官方源安装
+如果不通过官方源安装，可以通过镜像源安装，如下：
+```apple js
+npm install underscore --registry=http://registry.url
+```
 
+#### 🍊 2.3.3.3 NPM钩子命令（package.json 中的 script 属性）
+比如一个xxx包中的package.json中有如下字段：
+```apple js
+scripts: {
+  preinstall: preinstall.js,
+  gxd: gxd.js
+}
+```
 
+那么在 npm install xxx 时， preinstall指向的脚本将会被加载执行。在执行npm gxd xxx 时，gxd指向的脚本会被加载执行。
 
+#### 🍊 2.3.3.4 NPM包的编写，发布，安装流程
 
 
 
