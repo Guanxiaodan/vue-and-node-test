@@ -150,6 +150,7 @@ CommonJS包规范由**包结构**和**包描述文件**两部分组成。
 #### 🍊 2.3.1.1 包结构
     存档文件：即一个目录直接打包成.zip或tar.gz格式的文件，安装后解压还原为目录。
 🍋 符合commonJS包规范的应该包含以下文件：
+
   🌲 package.json: 包描述文件
   
   🌲 bin: 用来存放可执行二进制文件的目录
@@ -160,10 +161,53 @@ CommonJS包规范由**包结构**和**包描述文件**两部分组成。
   
   🌲 test: 用于存放单元测试用例的代码
 
+### 🍎 2.3.2 NPM的包规范
+  > CommonJS包规范和NPM包规范的关系：CommonJS包规范是理论，NPM是其中的一种实践。
+  
+ 🍋 在CommonJS的package.json文件中，定义了一些字段。而NPM的package.json 文件只是比前者多了几个字段：
+ 
+ 🌲 author: 作者
+ 
+ 🌲 bin: 一些包作者希望包可以作为命令行工具使用。设置好bin自断后，通过npm install package_name -g 命令就可以将脚本添加到执行路径中，之后可以在命令行中直接执行。
+ 
+ 🌲 main: 模块引入方法require()在引入包时，会优先检查这个字段，并将其作为包中其余模块的入口。如果不存在这个字段，require()方法会查找包目录下的index.js,index.node,index.json 文件作为默认入口。
+ 
+ 🌲 devDependencies: 一些模块只在开发时需要依赖。
+  
+### 🍎 2.3.3 NPM常用功能
+#### 🍊 2.3.3.1 全局模式安装
+如果包中含有命令行工具（bin），那么需要执行npm install express -g命令进行全局模式安装。
+> 注意： 这个全局模式的字眼并不准确，全局安装的包并不意味着在任何地方通过require()的方式都能引用到。实际上，-g是将一个包安装为全局可用的可执行命令，它根据宝描述文件中的斌字段配置。
   
   
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## 创建模块
 代码位置： [vue-and-node-test/src/tryNode/module/useModule.js](../tryNode/module/useModule.js)
