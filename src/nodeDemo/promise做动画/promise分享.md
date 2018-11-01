@@ -1,10 +1,12 @@
 # Promise分享
-## promise是什么：
-定义上来说Promise是一个构造函数，它接受一个函数作为参数，这个函数又有两个参数分别为resolve和reject，这两个参数也是函数。
+##Promise基础
+### promise是什么：
+定义上来说Promise是一个构造函数，这个构造函数接受一个函数作为参数，这个函数又有两个参数分别为resolve和reject，这两个参数也是函数。
 功能上来说
 Promise是一种代码结构和流程，是一种写代码的方式，并且是用来写JavaScript编程中的异步代码的。
+promise实例(对象)有三种状态，pending,fulfilled,rejected.状态一旦转化，便不可逆。
 
-## promise的基本用法
+### promise的基本用法
 ```
     let p = new Promise((resolve, reject) => {
     // 做一些事情
@@ -27,20 +29,20 @@ Promise是一种代码结构和流程，是一种写代码的方式，并且是�
 
 1. 构造实例
 构造函数接受一个函数作为参数。
-调用构造函数得到实例p的同时，作为参数的函数会立即执行。--fn1--
+调用构造函数得到实例p的同时，作为参数的函数会立即执行。--f1--
 参数函数接受两个回调函数参数resolve和reject。
 在参数函数被执行的过程中，如果在其内部调用resolve，会将p的状态变成fulfilled，或者调用reject，会将p的状态变成rejected。
 ***也就是说当new了一个promise实例的时候，就已经注定了这个实例的状态是resolve还是reject了***
 
 2. 调用.then
-调用.then()可以为实例p注册两种状态回调函数
+调用.then()可以为实例p注册两种状态回调函数，.then()函数接受两个参数，这两个参数也都是函数。
 当实例p的状态为fulfilled，会触发第一个函数执行
-当实例p的状态为rejected，则触发第二个函数执行 --fn2--
+当实例p的状态为rejected，则触发第二个函数执行 --f2--
 
 3.调用.catch
-.catch就相当于.then()里面传进去的第二的参数 --fn6 里面的两个写法等价--
+.catch就相当于.then()里面传进去的第二的参数 --f6 里面的两个写法等价--
 
-## promise的有什么用
+### promise的有什么用
 比如我们要查找浙江省杭州市黎明县东乡镇的丰田X系的车的价格，我们可能得这么写：
  ```
  getSheng(){ // 获取全国有哪些省
@@ -76,7 +78,7 @@ Promise是一种代码结构和流程，是一种写代码的方式，并且是�
 上面这段代码就是传说中的回调地狱，在修改的时候你首先得理清楚这些函数的执行顺序，同步代码异步代码再一混合，维护起来会非常麻烦。
 如果我们用promise来优化一下: --f3--
 
-##promise的其他常用功能
+###promise的其他常用功能
 1.all
 我们经常有这样的需要：进入一个页面的时候，需要发多个请求，但是这些请求相互之间没有依赖关系，但是希望所有的请求都正确返回后再渲染页面
 这时候，promise.all()就完全符合我们的应用场景 --f5--
@@ -87,6 +89,19 @@ promise.all()是等待最后一个异步操作执行结束，然后将所有函�
 与promise.all()相反，promise.race()是谁先执行完，就返回谁的结果，没执行完的就去不管了 --f5 吧all改成race--
 
 
+##Promise进阶
+
+### .then()返回一个promise对象(是对象，不是函数),这个对象带有状态和返回的值
+.then()是promise原型链上定义的方法，所以promise对象都可以调用.then()方法。
+所以可以进行链式调用，也就是.then后面可以继续.then。在注册的状态回调函数中，可以通过return语句改变.then返回的promise对象的状态，以及向后面.then注册的状态回调传递数据；也可以不使用return语句，那样默认就是将返回的promise对象resolve。***但是不能使用resolve，reject，异步操作也不能如想象中运行***
+我们来看个例子：--f7--
+
+通过这个例子可以看出来.then()返回的是一个带状态的promise对象
+
+### 
+
+### 缺点
+无法中途取消promise
 
 
 
@@ -96,3 +111,4 @@ promise.all()是等待最后一个异步操作执行结束，然后将所有函�
 
 # 参考文档：
 https://zhuanlan.zhihu.com/p/26523836
+https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise

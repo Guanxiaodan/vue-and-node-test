@@ -211,9 +211,28 @@ p.then(() => {
 ```
 
 
-#f2
+#f7
 ```
+var g1 = new Promise(function(resolve, reject) {
+  setTimeout(function() {
+    reject('foo');
+  }, 300);
+});
 
+g1.then(function(value) {
+  console.log(value);
+},function(err) {
+  console.log(err);
+});
+
+// 1.添加const g2 = 到g1.then()前面，分别打印g1,g2
+// 2.const g3 = g2.then(function(value) {
+	console.log(g.c)
+},function(err) {
+  console.log(err);
+ 
+})
+// 3.分别打印g1,g2,g3
 ```
 
 
