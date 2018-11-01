@@ -143,15 +143,71 @@ outOfCatch.then((res) => {
 ```
 
 
-#f2
+#f5
+```
+sheng = () => {
+    return new Promise((resolve, reject) => {
+            setTimeout(function(){
+                resolve('杭州市')
+            },1000)
+        })
+}
+
+shi = (res) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(function(){
+             resolve('杭州市')
+            },2000)
+        })
+}
+
+qu = (res) => {
+        return new Promise((resolve, reject) => {
+            setTimeout(function(){
+             resolve('黎明县')
+            },3000)
+        })
+}
+
+Promise.all([sheng(),shi(),qu()]).then((res2)=>{
+    console.log('获取到价格了',res2)
+},(err)=>{
+    console.log(err)
+})
 ```
 
+
+#f6
 ```
+<!-- .then(fn1,fn2) -->
+let p = new Promise((resolve, reject) => {
+  if (false) {
+    resolve()
+  } else {
+    reject('返回一个错误')
+  }
+})
 
+p.then(() => {
+    console.log('resolve回调执行了')
+}, (err) => {
+    console.log('reject回调执行了', err)
+})
 
-#f2
-```
+<!-- .catch() -->
+let p = new Promise((resolve, reject) => {
+  if (false) {
+    resolve()
+  } else {
+    reject('返回一个错误')
+  }
+})
 
+p.then(() => {
+    console.log('resolve回调执行了')
+}).catch((err) => {
+    console.log('reject回调执行了', err)
+})
 ```
 
 
