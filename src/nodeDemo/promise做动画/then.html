@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+process.nextTick(() => {
+  console.log('nextTick111')
+})
+setImmediate(() => {
+  console.log('setImmediate222')
+})
+Promise.resolve()
+  .then(() => {
+    console.log('then333')
+  })
+console.log('end444')
+
+
+
+
+</script>
+</body>
+</html>

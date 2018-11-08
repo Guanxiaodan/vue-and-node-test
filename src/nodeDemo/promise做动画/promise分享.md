@@ -98,15 +98,54 @@ promise.all()是等待最后一个异步操作执行结束，然后将所有函�
 
 通过这个例子可以看出来.then()返回的是一个带状态的promise对象
 
-### 
+
+### .then()是异步调用的
+先来看一道题：
+```
+new Promise(resolve => {
+    console.log(1);
+    resolve(3);
+    console.log(4);
+}).then(num => {
+    console.log(num)
+});
+console.log(2)
+```
+执行到了resolve的时候，把这个promise对象的状态和传输的值保存了下来，其实.then()函数是立即执行的，但是.then()里传的函数却是异步执行的，是因为传入的函数实际上是包含在immediate函数里的，用immediate实现了一个nextTick，这个nextTick是一个异步函数，可以粗略地理解为setTimeout(function(){},0)，在同步函数执行完成后会立即执行这个函数。所以我们看到打印结果为···。
+
+
+### promise状态一旦发生改变便不可逆
+```
+const promise = new Promise((resolve, reject) => {
+  resolve('success1')
+  reject('error')
+  resolve('success2')
+})
+
+promise
+  .then((res) => {
+    console.log('then: ', res)
+  })
+  .catch((err) => {
+    console.log('catch: ', err)
+  })
+console.log(promise)
+```
+
+### 值穿透
+```
+Promise.resolve(1)
+  .then(2)
+  .then(Promise.resolve(3))
+  .then(console.log)
+```
+期望then.catch里面出入的参数是函数，如果传入非函数，则会发生值穿透
 
 ### 缺点
 无法中途取消promise
 
 
 
-111.reject为什么在同步过程中出现错误进入catch，但是在异步过程中出现错误不进入catch(除非在异步里面写到reject里)？ --f4--
-222.promise构造函数的参数里面一会返回promise，一会不返回promise,到底什么区别
 
 
 # 参考文档：
