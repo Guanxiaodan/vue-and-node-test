@@ -231,6 +231,7 @@ sheng()
 
 我们经常有这样的需要：进入一个页面的时候，需要发多个请求，但是这些请求相互之间没有依赖关系，但是希望所有的请求都正确返回后再渲染页面
 这时候，promise.all()就完全符合我们的应用场景 --f5--
+
 promise.all()是等待最后一个异步操作执行结束，然后将所有函数的执行结果放入数组中，再返回
 --f5--
 ```
@@ -275,7 +276,8 @@ Promise.all([sheng(),shi(),qu()]).then((res2)=>{
 
 ### 1. .then()返回一个promise对象(是对象，不是函数),这个对象带有状态和返回的值
 .then()是promise原型链上定义的方法，所以promise对象都可以调用.then()方法。
-所以可以进行链式调用，也就是.then后面可以继续.then。在注册的状态回调函数中，可以通过return语句改变.then返回的promise对象的状态，以及向后面.then注册的状态回调传递数据；也可以不使用return语句，那样默认就是将返回的promise对象resolve。***但是不能使用resolve，reject，异步操作也不能如想象中运行***
+
+.then()返回一个promise对象，所以可以进行链式调用，也就是.then后面可以继续.then。
 我们来看个例子：--f7--
 ```
 var g1 = new Promise(function(resolve, reject) {
