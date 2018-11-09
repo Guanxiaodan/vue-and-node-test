@@ -51,6 +51,7 @@ let r = new Promise((resolve, reject) => {
 ```
 
 ②. 调用.then
+
 调用.then()可以为实例p注册两种状态回调函数，.then()函数接受两个参数，这两个参数也都是函数。
 当实例p的状态为fulfilled，会触发第一个函数执行
 当实例p的状态为rejected，则触发第二个函数执行 --f2--
