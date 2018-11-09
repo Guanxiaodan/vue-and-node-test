@@ -28,11 +28,14 @@ promise实例(对象)有三种状态，pending,fulfilled,rejected.状态一旦�
 第一段调用了Promise构造函数，第二段是调用了promise实例的.then方法
 
 ①. 构造实例
+
 构造函数接受一个函数作为参数。
+
 调用构造函数得到实例p的同时，作为参数的函数会立即执行。--f1--
+
 参数函数接受两个回调函数参数resolve和reject。
+
 在参数函数被执行的过程中，如果在其内部调用resolve，会将p的状态变成fulfilled，或者调用reject，会将p的状态变成rejected。
-***也就是说当new了一个promise实例的时候，就已经注定了这个实例的状态是resolve还是reject了***
 
 --f1--
 可以看到作为参数的箭头函数也执行了
