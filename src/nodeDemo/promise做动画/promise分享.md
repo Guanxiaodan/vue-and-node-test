@@ -35,7 +35,7 @@ promise实例(对象)有三种状态，pending,fulfilled,rejected.状态一旦�
 ***也就是说当new了一个promise实例的时候，就已经注定了这个实例的状态是resolve还是reject了***
 
 --f1--
-可以看到座位参数的箭头函数也执行了
+可以看到作为参数的箭头函数也执行了
 ```
 let r = new Promise((resolve, reject) => {
   if (true) {
@@ -102,6 +102,7 @@ p.then(() => {
 }).catch((err) => {
     console.log('reject回调执行了', err)
 })
+```
 
 ### 3.promise的有什么用
 比如我们要查找浙江省杭州市黎明县东乡镇的丰田X系的车的价格，我们可能得这么写：
