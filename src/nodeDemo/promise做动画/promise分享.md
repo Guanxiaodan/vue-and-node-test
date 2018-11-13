@@ -232,6 +232,8 @@ sheng()
 我们经常有这样的需要：进入一个页面的时候，需要发多个请求，但是这些请求相互之间没有依赖关系，但是希望所有的请求都正确返回后再渲染页面
 这时候，promise.all()就完全符合我们的应用场景 --f5--
 
+Promise.all方法接受一个数组作为参数，数组元素都是 Promise 实例，如果不是，就会先调用下面讲到的Promise.resolve方法，将参数转为 Promise 实例，再进一步处理
+
 promise.all()是等待最后一个异步操作执行结束，然后将所有函数的执行结果放入数组中，再返回
 --f5--
 ```
@@ -272,9 +274,23 @@ Promise.all([sheng(),shi(),qu()]).then((res2)=>{
 与promise.all()相反，promise.race()是谁先执行完，就返回谁的结果，没执行完的就去不管了 --f5 吧all改成race--
 
 
+3.finally
+
+finally方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。
+
+finally的回调函数不接受任何参数，所以没办法知道前面的执行结果是fulfilled还是rejected。所以在finally里面执行的操作应该是与状态无关的，不依赖与Promise的执行结果。
+```
+promise
+.then(result => {···})
+.catch(error => {···})
+.finally(() => {···});
+```
+
+
+
 ## 二、Promise进阶
 
-### 1. .then()返回一个promise对象(是对象，不是函数),这个对象带有状态和返回的值
+### 1. .then()返回一个新的promise对象(是对象，不是函数),这个对象带有状态和返回的值
 .then()是promise原型链上定义的方法，所以promise对象都可以调用.then()方法。
 
 .then()返回一个promise对象，所以可以进行链式调用，也就是.then后面可以继续.then。
@@ -318,6 +334,7 @@ console.log(2)
 ```
 执行到了resolve的时候，把这个promise对象的状态和传输的值保存了下来，其实.then()函数是立即执行的，但是.then()里传的函数却是异步执行的，是因为传入的函数实际上是包含在immediate函数里的，用immediate实现了一个nextTick，这个nextTick是一个异步函数，可以粗略地理解为setTimeout(function(){},0)，在同步函数执行完成后会立即执行这个函数。所以我们看到打印结果为···。
 
+如果不希望resolve后面的程序执行,那就在resolve前面添加return
 
 ### 3. promise状态一旦发生改变便不可逆
 ```
@@ -337,7 +354,34 @@ promise
 console.log(promise)
 ```
 
-### 4.值穿透
+### 4.如果resolve(a),a是一个promise对象，则a的状态决定了包含他的父promise的状态
+```
+let p3 = new Promise(function (resolve, reject) {
+  setTimeout(() => reject(new Error('fail')), 3000)
+})
+
+let p4 = new Promise(function (resolve, reject) {
+  setTimeout(() => resolve(p3), 1000)
+})
+p4
+  .then(result => console.log('aaa',result))
+  .catch(error => console.log('bbb',error))
+
+```
+### 5.建议把catch放到最后
+```
+Promise.resolve()
+.catch(function(error) {
+  console.log('oh no', error);
+})
+.then(function() {
+  console.log(aaa);
+});
+```
+
+
+
+### 6.值穿透
 ```
 Promise.resolve(1)
   .then(2)
@@ -360,3 +404,4 @@ https://caniuse.com/#search=promise
 # 参考文档：
 https://zhuanlan.zhihu.com/p/26523836
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise
+http://es6.ruanyifeng.com/#docs/promise
