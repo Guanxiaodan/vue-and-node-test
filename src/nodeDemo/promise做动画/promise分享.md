@@ -1,9 +1,12 @@
 # Promise分享
 ## 一、Promise基础
 ### 1.promise是什么：
-定义上来说Promise是一个构造函数，这个构造函数接受一个函数作为参数，这个函数又有两个参数分别为resolve和reject，这两个参数也是函数。
+定义上来说Promise是一个构造函数，这个**构造函数**接受一个函数作为参数，这个函数又有两个参数分别为resolve和reject，这两个参数也是函数。
+
 功能上来说
+
 Promise是一种代码结构和流程，是一种写代码的方式，并且是用来写JavaScript编程中的异步代码的。
+
 promise实例(对象)有三种状态，pending,fulfilled,rejected.状态一旦转化，便不可逆。
 
 ### 2.promise的基本用法
