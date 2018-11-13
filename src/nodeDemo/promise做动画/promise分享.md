@@ -409,5 +409,7 @@ https://caniuse.com/#search=promise
 
 # 参考文档：
 https://zhuanlan.zhihu.com/p/26523836
+
 https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
 http://es6.ruanyifeng.com/#docs/promise
