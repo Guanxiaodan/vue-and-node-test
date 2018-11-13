@@ -1,7 +1,7 @@
 # Promise分享
 ## 一、Promise基础
 ### 1.promise是什么：
-定义上来说Promise是一个构造函数，这个**构造函数**接受一个函数作为参数，这个函数又有两个参数分别为resolve和reject，这两个参数也是函数。
+Promise是一个构造函数，这个**构造函数**接受一个函数作为参数，这个函数又有两个参数分别为resolve和reject，这两个参数也是函数。
 
 功能上来说
 
@@ -11,7 +11,7 @@ promise实例(对象)有三种状态，pending,fulfilled,rejected.状态一旦�
 
 ### 2.promise的基本用法
 ```
-    let p = new Promise((resolve, reject) => {
+    p = new Promise((resolve, reject) => {
     // 做一些事情
     // 然后在某些条件下resolve，或者reject
     if (/* 条件随便写^_^ */) {
@@ -34,16 +34,16 @@ promise实例(对象)有三种状态，pending,fulfilled,rejected.状态一旦�
 
 构造函数接受一个函数作为参数。
 
-调用构造函数得到实例p的同时，作为参数的函数会立即执行。--f1--
+调用构造函数得到实例的同时，作为参数的函数会立即执行。--f1--
 
 参数函数接受两个回调函数参数resolve和reject。
 
-在参数函数被执行的过程中，如果在其内部调用resolve，会将p的状态变成fulfilled，或者调用reject，会将p的状态变成rejected。
+一般情况下，如果在其内部调用resolve，会将实例的状态变成fulfilled，或者调用reject，会将实例的状态变成rejected。
 
 --f1--
 可以看到作为参数的箭头函数也执行了
 ```
-let r = new Promise((resolve, reject) => {
+p = new Promise((resolve, reject) => {
   if (true) {
 	console.log(11111)
     resolve()
@@ -55,13 +55,13 @@ let r = new Promise((resolve, reject) => {
 
 ②. 调用.then
 
-调用.then()可以为实例p注册两种状态回调函数，.then()函数接受两个参数，这两个参数也都是函数。
-当实例p的状态为fulfilled，会触发第一个函数执行
-当实例p的状态为rejected，则触发第二个函数执行 --f2--
+调用.then()可以为promise实例注册两种状态回调函数，.then()函数接受两个参数，这两个参数也都是函数。
+当promise实例的状态为fulfilled，会触发第一个函数执行
+当promise实例的状态为rejected，则触发第二个函数执行 --f2--
 
 --f2--
 ```
-let p = new Promise((resolve, reject) => {
+p = new Promise((resolve, reject) => {
   if (true) {
 	console.log(11111)
     resolve()
@@ -79,10 +79,10 @@ p.then(() => {
 
 ③.调用.catch
 
-.catch就相当于.then()里面传进去的第二的参数 --f6 里面的两个写法等价--
+.catch就相当于.then()里面传进去的第二的参数 --f6 里面的两个写法可以认为是等价的，但更推荐使用catch来写--
 ```
 <!-- .then(fn1,fn2) -->
-let p = new Promise((resolve, reject) => {
+p = new Promise((resolve, reject) => {
   if (false) {
     resolve()
   } else {
@@ -97,7 +97,7 @@ p.then(() => {
 })
 
 <!-- .catch() -->
-let p = new Promise((resolve, reject) => {
+p = new Promise((resolve, reject) => {
   if (false) {
     resolve()
   } else {
@@ -235,7 +235,7 @@ sheng()
 我们经常有这样的需要：进入一个页面的时候，需要发多个请求，但是这些请求相互之间没有依赖关系，但是希望所有的请求都正确返回后再渲染页面
 这时候，promise.all()就完全符合我们的应用场景 --f5--
 
-Promise.all方法接受一个数组作为参数，数组元素都是 Promise 实例，如果不是，就会先调用下面讲到的Promise.resolve方法，将参数转为 Promise 实例，再进一步处理
+Promise.all方法接受一个数组作为参数，数组元素都是 Promise 实例
 
 promise.all()是等待最后一个异步操作执行结束，然后将所有函数的执行结果放入数组中，再返回
 --f5--
@@ -243,7 +243,7 @@ promise.all()是等待最后一个异步操作执行结束，然后将所有函�
 sheng = () => {
     return new Promise((resolve, reject) => {
             setTimeout(function(){
-                resolve('杭州市')
+                resolve('浙江省')
             },1000)
         })
 }
@@ -293,7 +293,7 @@ promise
 
 ## 二、Promise进阶
 
-### 1. .then()返回一个新的promise对象(是对象，不是函数),这个对象带有状态和返回的值
+### 1. .then()返回一个新的promise对象,这个对象带有状态和返回的值
 .then()是promise原型链上定义的方法，所以promise对象都可以调用.then()方法。
 
 .then()返回一个promise对象，所以可以进行链式调用，也就是.then后面可以继续.then。
@@ -323,7 +323,23 @@ g1.then(function(value) {
 通过这个例子可以看出来.then()返回的是一个带状态的promise对象
 
 
-### 2. .then()是异步调用的
+### 2.如果resolve(a),a是一个promise对象，则a的状态决定了包含他的父promise的状态
+```
+p3 = new Promise(function (resolve, reject) {
+  setTimeout(() => reject(new Error('fail')), 3000)
+})
+
+p4 = new Promise(function (resolve, reject) {
+  setTimeout(() => resolve(p3), 1000)
+})
+p4
+  .then(result => console.log('aaa',result))
+  .catch(error => console.log('bbb',error))
+
+```
+
+
+### 3. .then()是异步调用的
 先来看一道题：
 ```
 new Promise(resolve => {
@@ -335,11 +351,11 @@ new Promise(resolve => {
 });
 console.log(2)
 ```
-执行到了resolve的时候，把这个promise对象的状态和传输的值保存了下来，其实.then()函数是立即执行的，但是.then()里传的函数却是异步执行的，是因为传入的函数实际上是包含在immediate函数里的，用immediate实现了一个nextTick，这个nextTick是一个异步函数，可以粗略地理解为setTimeout(function(){},0)，在同步函数执行完成后会立即执行这个函数。所以我们看到打印结果为···。
+
 
 如果不希望resolve后面的程序执行,那就在resolve前面添加return
 
-### 3. promise状态一旦发生改变便不可逆
+### 4. promise状态一旦发生改变便不可逆
 ```
 const promise = new Promise((resolve, reject) => {
   resolve('success1')
@@ -357,20 +373,7 @@ promise
 console.log(promise)
 ```
 
-### 4.如果resolve(a),a是一个promise对象，则a的状态决定了包含他的父promise的状态
-```
-let p3 = new Promise(function (resolve, reject) {
-  setTimeout(() => reject(new Error('fail')), 3000)
-})
 
-let p4 = new Promise(function (resolve, reject) {
-  setTimeout(() => resolve(p3), 1000)
-})
-p4
-  .then(result => console.log('aaa',result))
-  .catch(error => console.log('bbb',error))
-
-```
 ### 5.建议把catch放到最后
 ```
 Promise.resolve()
