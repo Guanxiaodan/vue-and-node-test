@@ -1,4 +1,4 @@
-require(['amdorigin', function (alert) {
+require(['amdorigin', 'cmdorigin'], function (alert) {
   alert.alertName('王力宏')
-  alert.alertAge(23)
-}])
+  alert.alertAge('23')
+})
